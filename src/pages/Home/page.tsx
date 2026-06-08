@@ -1,133 +1,183 @@
-import React from "react";
+import {
+  FaUser,
+  FaBolt,
+  FaBookOpen,
+  FaQuestionCircle,
+  FaCode,
+  FaChevronRight,
+  FaMoon,
+  FaSun,
+  FaGlobe,
+} from "react-icons/fa";
+
+import { useState } from "react";
+
+const quickMenus = [
+  {
+    icon: <FaBookOpen />,
+    title: "Daftar Kanji",
+    desc: "500+ Kanji & kosakata",
+    color: "text-blue-500",
+  },
+  {
+    icon: <FaQuestionCircle />,
+    title: "Panduan",
+    desc: "Cara bermain",
+    color: "text-green-500",
+  },
+  {
+    icon: <FaCode />,
+    title: "Developer",
+    desc: "Tentang project",
+    color: "text-purple-500",
+  },
+];
 
 export default function HomePage() {
+  const [dark, setDark] = useState(false);
+  const [lang, setLang] = useState("EN");
+
   return (
-    <section className="min-h-screen bg-neutral-100 text-black font-mono relative overflow-hidden p-6 md:p-10">
-      {/* ===== BACKGROUND SCREENTONE ===== */}
-      <div
-        className="absolute inset-0 opacity-[0.06] pointer-events-none"
-        style={{
-          backgroundImage: "radial-gradient(circle, #000 1px, transparent 1px)",
-          backgroundSize: "12px 12px",
-        }}
-      />
+    <main
+      className={`min-h-screen transition-all duration-300 flex items-center justify-center px-6 relative overflow-hidden ${
+        dark
+          ? "bg-[#0b0f1a] text-white"
+          : "bg-gradient-to-br from-white via-gray-50 to-blue-50 text-gray-900"
+      }`}
+    >
+      {/* decorative background glow */}
+      <div className="absolute w-150 h-150 bg-blue-500/20 blur-3xl rounded-full -top-50 -left-50" />
+      <div className="absolute w-125 h-125 bg-pink-400/20 blur-3xl rounded-full -bottom-50 -right-50" />
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 relative z-10">
-        {/* ================= LEFT NAV ================= */}
-        <aside className="lg:col-span-2 flex lg:flex-col gap-4">
-          <div className="w-full border-4 border-black bg-white shadow-[6px_6px_0px_#000] p-4 relative">
-            {/* label */}
-            <div className="absolute -top-3 -left-3 bg-black text-white px-2 py-1 text-xs font-black rotate-[-6deg]">
-              MENU
-            </div>
+      <div className="w-full max-w-6xl z-10">
+        {/* TOP BAR */}
+        <div className="flex justify-between items-center mb-10">
+          <button
+            onClick={() =>
+              setLang(lang === "EN" ? "ID" : lang === "ID" ? "JP" : "EN")
+            }
+            className={`flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-md border transition hover:scale-105 ${
+              dark
+                ? "border-white/10 bg-white/5"
+                : "border-black/10 bg-white/60"
+            }`}
+          >
+            <FaGlobe />
+            <span className="font-semibold">{lang}</span>
+          </button>
 
-            <nav className="flex lg:flex-col gap-3 justify-center text-center font-black uppercase text-sm">
-              <button className="border-2 border-black px-2 py-1 hover:bg-yellow-300 transition">
-                Gallery
-              </button>
+          <button
+            onClick={() => setDark(!dark)}
+            className={`flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-md border transition hover:scale-105 ${
+              dark
+                ? "border-white/10 bg-white/5"
+                : "border-black/10 bg-white/60"
+            }`}
+          >
+            {dark ? <FaSun /> : <FaMoon />}
+            <span className="font-semibold">
+              {dark ? "Light Mode" : "Dark Mode"}
+            </span>
+          </button>
+        </div>
 
-              <button className="border-2 border-black px-2 py-1 hover:bg-yellow-300 transition">
-                About
-              </button>
+        {/* HERO */}
+        <div className="text-center mb-12">
+          <h1 className="text-6xl md:text-7xl tracking-wider bg-linear-to-r from-red-500 via-pink-500 to-yellow-400 text-transparent bg-clip-text font-rock-n-roll">
+            漢字バトル
+          </h1>
 
-              <button className="border-2 border-black px-2 py-1 hover:bg-yellow-300 transition">
-                Contact
-              </button>
-            </nav>
+          <p className={`mt-4 ${dark ? "text-gray-300" : "text-gray-600"}`}>
+            Belajar bahasa Jepang dengan cara yang seru dan interaktif.
+          </p>
+
+          <div className="mt-6 inline-block px-4 py-2 rounded-full text-sm bg-black/5 dark:bg-white/10 backdrop-blur-md">
+            ⚔️ Latihan • Bertarung • Kuasai Kanji
           </div>
-        </aside>
+        </div>
 
-        {/* ================= MAIN AREA ================= */}
-        <main className="lg:col-span-10 grid grid-cols-1 md:grid-cols-12 gap-6">
-          {/* ===== HERO PANEL ===== */}
-          <div className="md:col-span-12 border-4 border-black bg-white shadow-[10px_10px_0px_#000] p-6 relative overflow-hidden">
-            {/* speed lines */}
-            <div
-              className="absolute inset-0 opacity-10"
-              style={{
-                backgroundImage:
-                  "repeating-linear-gradient(45deg, #000 0, #000 2px, transparent 2px, transparent 10px)",
-              }}
-            />
+        {/* MAIN MODE */}
+        <div className="grid md:grid-cols-2 gap-6 mb-10">
+          {/* SINGLE */}
+          <button
+            className={`group p-8 rounded-3xl border backdrop-blur-xl transition-all cursor-pointer hover:scale-[1.03] hover:shadow-2xl ${
+              dark
+                ? "bg-white/5 border-white/10"
+                : "bg-white/70 border-black/10"
+            }`}
+          >
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <div className="p-3 rounded-2xl bg-blue-500/10 text-blue-500 text-2xl">
+                  <FaUser />
+                </div>
 
-            {/* speech bubble */}
-            <div className="absolute top-4 left-4 bg-white border-2 border-black px-3 py-1 text-xs font-black shadow-[3px_3px_0px_#000] rotate-[-3deg]">
-              ENTER THE KANJI BATTLE WORLD!
+                <div className="text-left">
+                  <h2 className="text-2xl font-bold">Single Player</h2>
+                  <p className="text-sm opacity-70">Mode latihan & belajar</p>
+                </div>
+              </div>
+
+              <FaChevronRight className="opacity-50 group-hover:translate-x-1 transition" />
             </div>
 
-            <h1 className="text-4xl md:text-6xl font-black italic tracking-tight mt-10 transform -skew-x-6">
-              KANJI BATTLE
-            </h1>
-
-            <p className="mt-3 font-bold text-sm md:text-base text-gray-700">
-              Learn • Fight • Master Japanese Kanji like a manga protagonist
+            <p className="mt-6 text-sm opacity-70 text-left">
+              Latihan kanji, kosakata, dan membaca tanpa lawan online.
             </p>
+          </button>
 
-            {/* impact text */}
-            <div className="absolute bottom-4 right-4 text-5xl font-black rotate-12">
-              ZAAAP!
-            </div>
-          </div>
+          {/* BATTLE */}
+          <button className="group p-8 rounded-3xl bg-linear-to-br from-red-600 to-pink-600 text-white hover:scale-[1.03] transition shadow-lg cursor-pointer">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <div className="p-3 rounded-2xl bg-white/20 text-white text-2xl">
+                  <FaBolt />
+                </div>
 
-          {/* ===== PANEL 1 ===== */}
-          <div className="md:col-span-5 border-4 border-black bg-white shadow-[8px_8px_0px_#000] p-4 relative">
-            <div className="absolute top-2 right-2 bg-black text-white text-xs px-2 py-1 font-black">
-              ACTION
-            </div>
+                <div className="text-left">
+                  <h2 className="text-2xl font-bold">Battle Mode</h2>
+                  <p className="text-white/80 text-sm">
+                    Pertarungan PvP Online
+                  </p>
+                </div>
+              </div>
 
-            <div className="h-48 bg-gray-200 border-2 border-black flex items-center justify-center">
-              <span className="font-bold opacity-60">
-                [ CHARACTER / AVATAR PANEL ]
-              </span>
-            </div>
-
-            <h2 className="mt-3 font-black uppercase text-lg border-b-4 border-black">
-              CREATE / JOIN ROOM
-            </h2>
-          </div>
-
-          {/* ===== PANEL 2 (HIGHLIGHT) ===== */}
-          <div className="md:col-span-7 border-4 border-black bg-yellow-300 shadow-[10px_10px_0px_#000] p-5 relative overflow-hidden">
-            <div className="absolute -top-2 -right-2 bg-black text-white text-xs px-2 py-1 font-black rotate-6">
-              SYSTEM
+              <FaChevronRight className="text-white/70 group-hover:translate-x-1 transition" />
             </div>
 
-            <div className="bg-white border-2 border-black p-4 shadow-[4px_4px_0px_#000]">
-              <h3 className="font-black text-lg mb-2">KANJI BATTLE SYSTEM</h3>
-              <p className="font-bold text-sm">
-                Answer kanji correctly to deal damage. Mistakes reduce your HP.
-                Learn faster, fight smarter, win battles.
-              </p>
-            </div>
+            <p className="mt-6 text-sm text-white/80 text-left">
+              Sistem ranking • Pertarungan real-time • Sistem room
+            </p>
+          </button>
+        </div>
 
-            <div className="absolute bottom-3 right-3 text-4xl font-black rotate-[-10deg]">
-              POW!
-            </div>
-          </div>
+        {/* QUICK MENU */}
+        <div className="grid grid-cols-3 gap-4">
+          {quickMenus.map((item, i) => (
+            <button
+              key={i}
+              className={`group p-5 text-start rounded-2xl border backdrop-blur-md transition hover:scale-105 hover:shadow-xl cursor-pointer ${
+                dark
+                  ? "bg-white/5 border-white/10"
+                  : "bg-white/70 border-black/10"
+              }`}
+            >
+              <div className="flex justify-between items-center ">
+                <div className={`  text-xl ${item.color}`}>{item.icon}</div>
+                <FaChevronRight className="opacity-30 group-hover:opacity-80 transition" />
+              </div>
 
-          {/* ===== PANEL 3 ===== */}
-          <div className="md:col-span-6 border-4 border-black bg-white shadow-[8px_8px_0px_#000] p-4">
-            <div className="h-40 bg-black text-white flex items-center justify-center border-2 border-black">
-              <span className="font-bold">[ KANJI LIST PANEL ]</span>
-            </div>
+              <h3 className="mt-4 font-bold">{item.title}</h3>
+              <p className="text-sm opacity-60">{item.desc}</p>
+            </button>
+          ))}
+        </div>
 
-            <h3 className="mt-3 font-black uppercase">Kanji List</h3>
-          </div>
-
-          {/* ===== PANEL 4 ===== */}
-          <div className="md:col-span-6 border-4 border-black bg-white shadow-[8px_8px_0px_#000] p-4 relative">
-            <div className="h-40 bg-gray-100 border-2 border-black flex items-center justify-center">
-              <span className="font-bold opacity-60">[ GUIDE PANEL ]</span>
-            </div>
-
-            <h3 className="mt-3 font-black uppercase">How To Play</h3>
-
-            <div className="absolute top-2 right-2 text-xl font-black rotate-12">
-              BOOM!
-            </div>
-          </div>
-        </main>
+        {/* FOOTER */}
+        <div className="text-center mt-12 text-xs opacity-50">
+          Kanji Battle © 2026 • Dibuat untuk belajar bahasa Jepang
+        </div>
       </div>
-    </section>
+    </main>
   );
 }
