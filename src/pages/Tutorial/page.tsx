@@ -1,4 +1,4 @@
-export function TutorialPage() {
+export default function TutorialPage() {
   return (
     <section>
       <h1>Tutorial Page</h1>
