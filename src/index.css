@@ -26,9 +26,16 @@ body {
 }
 
 section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   min-height: 100vh;
   height: 100%;
+  transition: all;
+  transition-duration: 300ms;
+  padding: 50px 0;
 }
 
 .outline-text {

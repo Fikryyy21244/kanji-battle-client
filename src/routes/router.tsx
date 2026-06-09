@@ -1,9 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import HomePage from "../pages/Home/page";
-import KanjiVocabulary from "../pages/KanjiVocabulary/page";
 import TutorialPage from "../pages/Tutorial/page";
-import CreditsPage from "../pages/Credits/page";
+import AboutPage from "../pages/About/page";
+import LearningPage from "../pages/Learning/page";
 
 const router = createBrowserRouter([
   {
@@ -15,16 +15,13 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: "/kanji-vocabulary",
-        element: <KanjiVocabulary />,
+        path: "/learning",
+        element: <LearningPage />,
       },
+
       {
-        path: "/tutorial",
-        element: <TutorialPage />,
-      },
-      {
-        path: "/credits",
-        element: <CreditsPage />,
+        path: "/about-app",
+        element: <AboutPage />,
       },
     ],
   },
