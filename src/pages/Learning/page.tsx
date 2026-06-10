@@ -6,24 +6,17 @@ import { learningMenus } from "../../datas/learningMenus";
 
 export default function LearningPage() {
   return (
-    <section>
-      <div className="w-full max-w-6xl mx-auto">
-        {/* Top Bar */}
-        <TopBar />
-        {/* Back Button */}
-        <BackButton />
-        {/* Header */}
-        <div className="my-10">
-          <PageHeader color="text-black">LEARNING HUB</PageHeader>
-        </div>
-
-        {/* Learning Menu */}
-        <div className="flex flex-col my-6">
-          {learningMenus.map((item, i) => (
-            <LearningMenuItem key={i} href={item.path} title={item.title} />
-          ))}
-        </div>
+    <div>
+      <div className="my-10">
+        <PageHeader color="text-black">LEARNING HUB</PageHeader>
       </div>
-    </section>
+
+      {/* Learning Menu */}
+      <div className="flex flex-col my-6">
+        {learningMenus.map((item, i) => (
+          <LearningMenuItem key={i} href={item.path} title={item.title} />
+        ))}
+      </div>
+    </div>
   );
 }

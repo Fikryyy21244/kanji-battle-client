@@ -4,6 +4,8 @@ import HomePage from "../pages/Home/page";
 import TutorialPage from "../pages/Tutorial/page";
 import AboutPage from "../pages/About/page";
 import LearningPage from "../pages/Learning/page";
+import KanjiPage from "../pages/Learning/kanji/page";
+import LearningLayout from "../layouts/LearningLayout";
 
 const router = createBrowserRouter([
   {
@@ -14,9 +16,20 @@ const router = createBrowserRouter([
         index: true,
         element: <HomePage />,
       },
+      // Learning
       {
         path: "/learning",
-        element: <LearningPage />,
+        element: <LearningLayout />,
+        children: [
+          {
+            index: true,
+            element: <LearningPage />,
+          },
+          {
+            path: "kanji",
+            element: <KanjiPage />,
+          },
+        ],
       },
 
       {

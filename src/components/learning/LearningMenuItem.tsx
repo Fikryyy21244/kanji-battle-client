@@ -19,7 +19,6 @@ export default function LearningMenuItem({ title, href }: Props) {
         overflow-hidden
       "
     >
-      {/* LEFT TEXT */}
       <motion.div
         className="relative z-10"
         variants={{
@@ -30,7 +29,6 @@ export default function LearningMenuItem({ title, href }: Props) {
         <h1 className="font-rock-n-roll text-4xl uppercase">{title}</h1>
       </motion.div>
 
-      {/* HOVER STRIP (MAIN EFFECT) */}
       <motion.div
         className="
           absolute left-0 top-0 h-full
