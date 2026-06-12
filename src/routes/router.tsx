@@ -6,6 +6,7 @@ import AboutPage from "../pages/About/page";
 import LearningPage from "../pages/Learning/page";
 import KanjiPage from "../pages/Learning/kanji/page";
 import LearningLayout from "../layouts/LearningLayout";
+import HiraganaPage from "../pages/Learning/hiragana/page";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <LearningPage />,
+          },
+          {
+            path: "hiragana",
+            element: <HiraganaPage />,
           },
           {
             path: "kanji",
